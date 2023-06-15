@@ -1,0 +1,5 @@
+*.squlite3
+*.pyc
+*.pyo
+
+.env
