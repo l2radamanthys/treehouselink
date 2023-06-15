@@ -1,6 +1,6 @@
-DB_NOMBRE_DEL_DUMP= ~/Dropbox/Trabajo/APPNAME/backups/app_backup_`date +'%Y%m%d_%Hhs%Mmin'`.dump
-DB_DUMP_MAS_RECIENTE=`ls -Art ~/Dropbox/Trabajo/APPNAME/backups/app_*.dump  | tail -n 1`
-NOMBRE_BD=bd_name
+DB_NOMBRE_DEL_DUMP= ~/Dropbox/Trabajo/treehouselink/backups/treehouselink_backup_`date +'%Y%m%d_%Hhs%Mmin'`.dump
+DB_DUMP_MAS_RECIENTE=`ls -Art ~/Dropbox/Trabajo/treehouselink/backups/treehouselink_*.dump  | tail -n 1`
+NOMBRE_BD=treehouselink
 
 
 N=[0m
