@@ -7,7 +7,7 @@ import environ
 env = environ.Env(
     DEBUG=(bool, True),
     DATABASE_URL=(str, ""),
-    SECRET_KEY=(str, ""),
+    SECRET_KEY=(str, "secret"),
     ENVIRONMENT=(str, "DEVELOPMENT"),
     ALLOWED_HOSTS=(str, "127.0.0.1"),
 )
@@ -36,11 +36,13 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "whitenoise.runserver_nostatic",
     "treelinks",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -101,6 +103,8 @@ TIME_ZONE = "America/Argentina/Buenos_Aires"
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 STATIC_ROOT = "assets"
 STATIC_URL = "/static/"
