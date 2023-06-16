@@ -1,0 +1,1 @@
+web: gunicorn wernher.wsgi --log-file=- -t 600
