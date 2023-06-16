@@ -9,6 +9,3 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("treelinks.urls")),
 ]
-
-if ENVIRONMENT == "DEVELOPMENT":
-    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)

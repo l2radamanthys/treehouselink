@@ -4,4 +4,4 @@
 *.pyc
 *.pyo
 
-.env
+*.env
