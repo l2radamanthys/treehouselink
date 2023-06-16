@@ -9,26 +9,25 @@
   <link rel="stylesheet" href="/static/styles/material-colors.css">
 </head>
 <body>
-  <div class="" style="padding: 3rem;">
-    <h1>Link Tree</h1>
+  <nav class="navbar navbar-dark bg-dark">
+    <span class="navbar-brand mb-0 h1 p-3">Tree House Links</span>
+  </nav>
 
-
+  <div class="p-3">
     <div class="card-columns" data-masonry='{"percentPosition": true }' >
     {% for node in nodes %}
-      <div class="card" style="width: 24rem; margin: 0.25rem;">
-        <div class="card-header h5">
-          <bold>{{ node.name }}</bold>
-        </div>
+      <div class="card mui-b-blue-gray-900" style="width: 24rem; margin: 0.25rem;">
+        <div class="card-header h5 mui-bg-blue-gray-700 mui-white">{{ node.name }}</div>
 
         <ul class="list-group list-group-flush">
           {% for link in node.links.all %}
           <li class="list-group-item">
-            <a href="" class="no-decoration">
-              <div>
+            <a href="{{link.uri}}" class="no-decoration" target="_blank">
+              <div class="mui-red-800">
                 {{ link.name }}
               </div>
-              <div class="h7 mui-gray-700">
-                {{ link.uri}}
+              <div class="h7 mui-blue-gray-800">
+                {{link.uri}}
               </div>
             </a>
           </li>

@@ -11,4 +11,6 @@ class LinkAdmin(admin.ModelAdmin):
         'uri',
         'active',
     )
-
+    search_fields = ("name", "uri")
+    autocomplete_fields = ("node",)
+    list_filter = ("node", "active")
