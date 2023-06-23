@@ -8,15 +8,18 @@
       <ul class="navbar-nav ms-auto">
         {% if user.is_authenticated %}
           <li class="nav-item">
+            <a class="nav-link" href="/admin/">Modificar</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Salir</a>
           </li>
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Iniciar sesión</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{% url 'home' %}">Regístrarse</a>
-          </li>
+          </li> -->
         {% endif %}
       </ul>
     </div>
