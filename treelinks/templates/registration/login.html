@@ -1,0 +1,66 @@
+{% extends "base-generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_content %}
+
+<div class="d-flex justify-content-center align-middle mt-4">
+  <div class="parent login-wrapper bg-beige-gradient mui-bg-white w-25 mt-4">
+    <div class="child pb-5">
+      <div class="container-fluid pb-4">
+        <a href="{% url 'home' %}">
+          <img class="d-block mx-auto w-100 mw6 mb-4" src="{% static 'assets/images/scipy-la-2022_logo.png' %}" alt="">
+        </a>
+      </div>
+      <div class="mw6 mx-auto px-3">
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
+    
+          <div class="h2">
+            Tree Link
+          </div>
+
+          <div class="h5">
+            Inicia sesión
+          </div>
+
+          <div class="form-group mb-3">
+            {{ form.username.label_tag }}
+            {% render_field form.username  class="form-control" %}
+          </div>
+          <div class="form-group">
+            {{ form.password.label_tag }}
+            {% render_field form.password class="form-control" %}
+          </div>
+    
+          <div class="form-group pt-3">
+            <input type="submit"  value="Ingresar" class="btn btn-primary w-100" />
+            <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+        </form>
+
+        <div class="mt-3 login-links d-flex justify-content-between">
+          <a href="{% url 'password_reset' %}">Recuperar contraseña</a>
+        </div>
+
+        {% if form.errors %}
+          <div class="h7 alert alert-warning mt-4">
+            Su nombre de usuario y contraseña no coinciden. Inténtalo de nuevo.
+          </div>
+        {% endif %}
+    
+        {% if next %}
+          <div class="h7 alert alert-warning mt-4">
+          {% if user.is_authenticated %}
+              Su cuenta no tiene acceso a esta página. Para continuar, inicie sesión con una cuenta que tenga acceso.
+          {% else %}
+              Por favor inicie sesión para ver esta página.
+          {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

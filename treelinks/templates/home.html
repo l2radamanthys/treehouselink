@@ -1,44 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tree Links</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link rel="stylesheet" href="/static/styles/app.css">
-  <link rel="stylesheet" href="/static/styles/material-colors.css">
-</head>
-<body>
-  <nav class="navbar navbar-dark bg-dark">
-    <span class="navbar-brand mb-0 h1 p-3">Tree House Links</span>
-  </nav>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_content %}
+  {{ block.super }}
 
   <div class="p-3">
+    {% if user.is_authenticated %}
     <div class="card-columns" data-masonry='{"percentPosition": true }' >
-    {% for node in nodes %}
-      <div class="card mui-b-blue-gray-900" style="width: 24rem; margin: 0.25rem;">
-        <div class="card-header h5 mui-bg-blue-gray-700 mui-white">{{ node.name }}</div>
-
-        <ul class="list-group list-group-flush">
-          {% for link in node.links.all %}
-          <li class="list-group-item">
-            <a href="{{link.uri}}" class="no-decoration" target="_blank">
-              <div class="mui-red-800">
-                {{ link.name }}
-              </div>
-              <div class="h7 mui-blue-gray-800">
-                {{link.uri}}
-              </div>
-            </a>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-    {% endfor %}
+      {% for node in nodes %}
+        <div class="card mui-b-blue-gray-900" style="width: 24rem; margin: 0.25rem;">
+          <div class="card-header h5 mui-bg-blue-gray-700 mui-white">{{ node.name }}</div>
+  
+          <ul class="list-group list-group-flush">
+            {% for link in node.links.all %}
+            <li class="list-group-item">
+              <a href="{{link.uri}}" class="no-decoration" target="_blank">
+                <div class="mui-red-800">
+                  {{ link.name }}
+                </div>
+                <div class="h7 mui-blue-gray-800">
+                  {{link.uri}}
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
     </div>
+    {% else %}
+    
+    <div class="text-center mui-white h1 p-4">
+      Tree Links
+    </div>
+    {% endif %}
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-</body>
-</html>
+{% endblock %}

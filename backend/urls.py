@@ -7,5 +7,6 @@ from backend.settings import MEDIA_URL, MEDIA_ROOT, ENVIRONMENT
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("", include("treelinks.urls")),
 ]
