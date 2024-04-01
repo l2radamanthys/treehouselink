@@ -13,16 +13,18 @@
   
           <ul class="list-group list-group-flush">
             {% for link in node.links.all %}
-            <li class="list-group-item">
-              <a href="{{link.uri}}" class="no-decoration" target="_blank">
-                <div class="mui-red-800">
-                  {{ link.name }}
-                </div>
-                <div class="h7 mui-blue-gray-800">
-                  {{link.uri}}
-                </div>
-              </a>
-            </li>
+              {% if link.active %}
+                <li class="list-group-item">
+                  <a href="{{link.uri}}" class="no-decoration" target="_blank">
+                    <div class="mui-red-800">
+                      {{ link.name }}
+                    </div>
+                    <div class="h7 mui-blue-gray-800">
+                      {{link.uri}}
+                    </div>
+                  </a>
+                </li>
+              {% endif %}
             {% endfor %}
           </ul>
         </div>

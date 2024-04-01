@@ -7,5 +7,5 @@ class HomePageView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["nodes"] = Node.objects.all()
+        context["nodes"] = Node.objects.filter(active=True)
         return context
